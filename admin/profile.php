@@ -1,13 +1,30 @@
+<?php
+/**
+ * 个人资料管理
+ */
+
+// 载入脚本
+// ========================================
+
+require '../functions.php';
+
+// 访问控制
+// ========================================
+
+// 获取登录用户信息
+xiu_get_current_user();
+
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <title>Dashboard &laquo; Admin</title>
-  <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="../assets/vendors/nprogress/nprogress.css">
-  <link rel="stylesheet" href="../assets/css/admin.css">
-  <script src="../assets/vendors/nprogress/nprogress.js"></script>
+  <link rel="stylesheet" href="/static/assets/vendors/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/assets/vendors/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/static/assets/vendors/nprogress/nprogress.css">
+  <link rel="stylesheet" href="/static/assets/css/admin.css">
+  <script src="/static/assets/vendors/nprogress/nprogress.js"></script>
 </head>
 <body>
   <script>NProgress.start()</script>
@@ -16,8 +33,8 @@
     <nav class="navbar">
       <button class="btn btn-default navbar-btn fa fa-bars"></button>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="profile.html"><i class="fa fa-user"></i>个人中心</a></li>
-        <li><a href="login.html"><i class="fa fa-sign-out"></i>退出</a></li>
+        <li><a href="profile.php"><i class="fa fa-user"></i>个人中心</a></li>
+        <li><a href="logout.php"><i class="fa fa-sign-out"></i>退出</a></li>
       </ul>
     </nav>
     <div class="container-fluid">
@@ -26,7 +43,7 @@
       </div>
       <!-- 有错误信息时展示 -->
       <!-- <div class="alert alert-danger">
-        <strong>错误！</strong>发生XXX错误
+        <strong>错误！</strong> 发生XXX错误
       </div> -->
       <form class="form-horizontal">
         <div class="form-group">
@@ -34,7 +51,7 @@
           <div class="col-sm-6">
             <label class="form-image">
               <input id="avatar" type="file">
-              <img src="../assets/img/default.png">
+              <img src="/static/assets/img/default.png">
               <i class="mask fa fa-upload"></i>
             </label>
           </div>
@@ -69,53 +86,18 @@
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-6">
             <button type="submit" class="btn btn-primary">更新</button>
-            <a class="btn btn-link" href="password-reset.html">修改密码</a>
+            <a class="btn btn-link" href="password-reset.php">修改密码</a>
           </div>
         </div>
       </form>
     </div>
   </div>
 
-  <div class="aside">
-    <div class="profile">
-      <img class="avatar" src="../uploads/avatar.jpg">
-      <h3 class="name">布头儿</h3>
-    </div>
-    <ul class="nav">
-      <li>
-        <a href="index.html"><i class="fa fa-dashboard"></i>仪表盘</a>
-      </li>
-      <li>
-        <a href="#menu-posts" class="collapsed" data-toggle="collapse">
-          <i class="fa fa-thumb-tack"></i>文章<i class="fa fa-angle-right"></i>
-        </a>
-        <ul id="menu-posts" class="collapse">
-          <li><a href="posts.html">所有文章</a></li>
-          <li><a href="post-add.html">写文章</a></li>
-          <li><a href="categories.html">分类目录</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="comments.html"><i class="fa fa-comments"></i>评论</a>
-      </li>
-      <li>
-        <a href="users.html"><i class="fa fa-users"></i>用户</a>
-      </li>
-      <li>
-        <a href="#menu-settings" class="collapsed" data-toggle="collapse">
-          <i class="fa fa-cogs"></i>设置<i class="fa fa-angle-right"></i>
-        </a>
-        <ul id="menu-settings" class="collapse">
-          <li><a href="nav-menus.html">导航菜单</a></li>
-          <li><a href="slides.html">图片轮播</a></li>
-          <li><a href="settings.html">网站设置</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+  <?php $current_page = 'profile'; ?>
+  <?php include 'inc/sidebar.php'; ?>
 
-  <script src="../assets/vendors/jquery/jquery.js"></script>
-  <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
+  <script src="/static/assets/vendors/jquery/jquery.js"></script>
+  <script src="/static/assets/vendors/bootstrap/js/bootstrap.js"></script>
   <script>NProgress.done()</script>
 </body>
 </html>
